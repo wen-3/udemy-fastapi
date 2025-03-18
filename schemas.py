@@ -16,3 +16,16 @@ class Product(ProductBase):
 
   class Config:
     orm_mode = True   # 讓 Pydantic 模型能夠與 ORM 模型交互
+
+class UserBase(BaseModel):
+  username: str
+
+class UserCreate(UserBase):
+  password: str   # 用於註冊時提供密碼
+
+class User(UserBase):
+  id: int
+  role: str   # 返回用戶時包含角色資訊
+
+  class Config:
+    orm_mode = True
