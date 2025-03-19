@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORS 測試</title>
+</head>
+<body>
+  <h1>CORS 測試</h1>
+  <button id="testButton">發送 CORS 請求</button>
+  
+  <script>
+    document.getElementById("testButton").addEventListener("click", function() {
+      fetch("http://localhost:8000", {
+        method: "GET",
+        credentials: "include"    // 設置傳送 Cookies 或者 Authorization headers
+      })
+      .then(res => res.json())
+      .then(data => console.log("Response:", data))
+      .catch(error => console.error("Error", error))
+    })
+  </script>
+</body>
+</html>
